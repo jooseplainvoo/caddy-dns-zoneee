@@ -1,0 +1,16 @@
+[tools]
+go = "1.26.0"                                             # = caddy:2.11.8-builder's Go
+"go:github.com/caddyserver/xcaddy/cmd/xcaddy" = "0.4.7"
+
+[env]
+GOTOOLCHAIN = "local"
+
+[tasks.test]
+run = "go vet ./... && go test -race ./..."
+
+[tasks.caddy]
+description = "Build Caddy with the local plugin and check it registers"
+run = """
+xcaddy build v2.11.8 --with github.com/jooseplainvoo/caddy-dns-zoneee=.
+./caddy list-modules | grep zoneee
+"""

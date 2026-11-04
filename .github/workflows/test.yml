@@ -1,5 +1,19 @@
 name: test
-on: [push, pull_request]
+on:
+  push:
+    paths:
+      - "**.go"
+      - "go.mod"
+      - "go.sum"
+      - "mise.toml"
+      - ".github/workflows/test.yml"
+  pull_request:
+    paths:
+      - "**.go"
+      - "go.mod"
+      - "go.sum"
+      - "mise.toml"
+      - ".github/workflows/test.yml"
 permissions:
   contents: read
 jobs:

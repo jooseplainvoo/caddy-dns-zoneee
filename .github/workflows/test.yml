@@ -8,10 +8,4 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: jdx/mise-action@v2
-      - name: debug module context
-        run: |
-          pwd
-          git ls-files
-          mise exec -- go env GOMOD GOWORK GOFLAGS
-      - run: mise run test
       - run: mise run test
